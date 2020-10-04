@@ -1,0 +1,10 @@
+<div class="text-center">
+    <form [formGroup]="form">
+      <mat-form-field style="width: 100%;">
+        <mat-label>Motivo de Rechazo</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+    </form>
+
+    <button mat-raised-button (click)="send()">Enviar</button>
+  </div>

@@ -1,0 +1,78 @@
+<div  class="ml-5 mr-5">
+<div class="text-center mt-3 ">
+    <h3>MIS PEDIDOS</h3>
+  </div>
+  <hr>
+  <mat-card class="example-card mt-4 mr-3 ml-3 mb-5" >
+      <mat-card-content>
+        <div class="row">
+          <div class="col-6">
+            <input type="text" mat-input (keyup)="buscar($event)" placeholder="Buscar"
+            class="form-control"/>            
+          </div>
+        </div>
+        <div class="spinner-container text-center" *ngIf="dataSource === undefined">
+          <mat-spinner></mat-spinner>
+        </div>
+          <table mat-table [dataSource]="dataSource" >
+              <ng-container matColumnDef="producto">
+                <th mat-header-cell *matHeaderCellDef>Producto </th>
+                <td mat-cell *matCellDef="let element">
+                  {{element.producto}} 
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="subproducto">
+                <th mat-header-cell *matHeaderCellDef>Subproducto </th>
+                <td mat-cell *matCellDef="let element">
+                  {{element.subproducto}} 
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="sucursal">
+                <th mat-header-cell *matHeaderCellDef>Sucursal </th>
+                <td mat-cell *matCellDef="let element">
+                  {{element.sucursal}} 
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="monto">
+                <th mat-header-cell *matHeaderCellDef>Monto </th>
+                <td mat-cell *matCellDef="let element">
+                  $ {{element.monto}} 
+                  </td>
+              </ng-container>
+            
+            
+              <!-- Weight Column -->
+              <ng-container matColumnDef="estado">
+                <th mat-header-cell *matHeaderCellDef> Estado </th>
+                <td mat-cell *matCellDef="let element">
+                  {{element.estatus_pago}}
+                </td>
+              </ng-container>
+            
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="options">
+                  <th mat-header-cell *matHeaderCellDef>  </th>
+                  <td mat-cell *matCellDef="let element">
+                      <a mat-raised-button color="secondary"
+                      (click)="pagar(element)" *ngIf="(element.estatus_pago === 'Borrador'
+                      && element.stock === undefined) || 
+                      (element.estatus_pago === 'Pendiente Por Pagar'
+                      && element.stock === undefined)"
+                      style="background-color: green; color: white;"
+                      ><mat-icon>credit_card</mat-icon> PAGAR</a>
+                      <a mat-raised-button color="secondary" *ngIf="element.stock === false && element.estatus_pago !== 'Pagado'">Agotado</a>
+                      <a mat-raised-button color="danger" *ngIf="element.estatus_pago === 'Borrador'"
+                      (click)="eliminar(element.id_pagos)"
+                      style="background-color: red; color: white;"
+                      ><mat-icon>delete</mat-icon> Eliminar</a>
+                  </td>
+                </ng-container>
+            
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 15]" [pageSize]="5"></mat-paginator>
+            
+      </mat-card-content>
+    </mat-card>
+  </div>

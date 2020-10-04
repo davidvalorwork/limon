@@ -1,0 +1,153 @@
+<div class="container white-content">
+    <div class="row yellow-content-rounded">
+		<div class="col-md-6 mx-auto d-flex justify-content-center mt-5">
+			<div class="compact-text-sm">
+				<h2 class="text-center font-weight-bold text-white mt-5">¡HOLA!</h2>
+				<h5 class="text-white w-100 text-center"> Escribenos tus dudas e inquietudes y nos contactaremos contigo a la brevedad.</h5>
+				<a routerLink="/postulacion" style="cursor: pointer; text-align: center;"> <img src="./assets/icon/BOTON_POSTULAR1.png" class="" alt=""></a>
+			</div>
+		</div>
+		<div class="col-md-6 mx-auto mt-5">
+			<form [formGroup]="form">
+				<div class="form-group">
+					<input type="text" class="form-control form-control-contact" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NOMBRE"
+						formControlName="nombre">
+				  </div>
+				<div class="form-group">
+					<input type="text" class="form-control form-control-contact" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="CORREO ELECTRÓNICO"
+						formControlName="correo">
+				  </div>
+				  <div class="form-group">
+					<input type="text" class="form-control form-control-contact" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="EMPRENDIMIENTO/CLIENTE"
+						formControlName="emprendimiento">
+				  </div>
+				  <div class="form-group">
+					<input type="text" class="form-control form-control-contact" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="TELÉFONO CONTACTO"
+						formControlName="telefono">
+				  </div>
+				  <div class="form-group">
+					<input type="text" class="form-control form-control-contact" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="MENSAJE"
+						formControlName="mensaje">
+					</div>
+					<!-- <div class="text-center" >
+						<button mat-raised-button >Enviar</button>
+					</div> -->
+					<div class="text-center" >
+						<a (click)="enviar(form.value)" style="cursor: pointer; text-align: center;"> <img src="./assets/icon/BOTON_ENVIAR.png" class="" alt=""></a>
+					</div>
+			  </form>
+		</div>
+	</div>
+	<div class="row mb-2 mt-2 d-flex justify-content-center" style=" margin: 0; padding: 0;">
+		<img src="./assets/img/BANNER_CONTACTO1.png" class="img-fluid w-100" alt="...">
+	</div>
+</div>
+
+<div class="container-fluid white-content " style="margin:0 ! important; padding: 0;">
+	<div class="row headband-black" style="margin:0 ! important; padding: 0;">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="text-left">
+			 <h5 class="text-white m-2 headband-text"><b class="text-uppercase">Contáctanos para mas info</b> <i> e-mail, teléfonos, Whatsapp y dirección</i></h5>
+		   </div>
+		</div>
+	  </div>
+	  <div class="row yellowL-content" style="margin:0 ! important; padding: 0;">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="mx-auto" style="width: 80%;">
+				<img src="./assets/img/INFO_CONTACTO_DETALLES.png" class="img-fluid mx-auto w-100 m-5" alt="...">
+			</div>
+		</div>
+	  </div>
+</div>
+
+<div class="container white-content">
+	<div class="justify-content-center mt-2">
+		<p class="lineYellow">
+		  <span class="font-weight-bold text-black">Siguenos en instragram</span>
+	  </p>
+      </div>
+	
+		<div id="instafeed"></div>
+
+		<div class="row d-flex justify-content-center mx-auto mt-5 size-content50" >
+			<div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+			  <a href="#" class="thumbnail d-flex justify-content-center instagram-img">
+				<img src="http://placehold.it/200x200" class="img-fluid intagram-img-border-g" alt="Producto">
+			  </a>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+			  <a href="#" class="thumbnail d-flex justify-content-center instagram-img">
+				<img src="http://placehold.it/200x200" class="img-fluid intagram-img-border-b" alt="Producto">
+			  </a>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-4 col-lg-4 ">
+			  <a href="#" class="thumbnail d-flex justify-content-center instagram-img">
+				<img src="http://placehold.it/200x200" class="img-fluid" alt="Producto">
+			  </a>
+			</div>
+	  </div>
+	  <div class="row d-flex justify-content-center mt-5 mx-auto size-content50">
+		<div class="col-md-4 col-sm-4 col-xs-4 col-lg-4 ">
+		  <a href="#" class="thumbnail d-flex justify-content-center instagram-img">
+			<img src="http://placehold.it/200x200" class="img-fluid intagram-img-border-y" alt="Producto">
+		  </a>
+		</div>
+		<div class="col-md-4 col-sm-4 col-xs-4 col-lg-4 ">
+		  <a href="#" class="thumbnail d-flex justify-content-center instagram-img">
+			<img src="http://placehold.it/200x200" class="img-fluid" alt="Producto">
+		  </a>
+		</div>
+		<div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+		  <a href="#" class="thumbnail d-flex justify-content-center instagram-img">
+			<img src="http://placehold.it/200x200" class="img-fluid" alt="Producto">
+		  </a>
+		</div>
+  </div>
+  <div class="row d-flex justify-content-center mt-5 mx-auto size-content50" >
+	<div class="col-md-4 col-sm-4 col-xs-4 col-lg-4 ">
+	  <a href="#" class="thumbnail d-flex justify-content-center instagram-img">
+		<img src="http://placehold.it/200x200" class="img-fluid intagram-img-border-b" alt="Producto">
+	  </a>
+	</div>
+	<div class="col-md-4 col-sm-4 col-xs-4 col-lg-4 ">
+	  <a href="#" class="thumbnail d-flex justify-content-center instagram-img">
+		<img src="http://placehold.it/200x200" class="img-fluid" alt="Producto">
+	  </a>
+	</div>
+	<div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+	  <a href="#" class="thumbnail d-flex justify-content-center instagram-img">
+		<img src="http://placehold.it/200x200" class="img-fluid intagram-img-border-g " alt="Producto">
+	  </a>
+	</div> 
+</div>
+<div class="row" style="margin-top: 35px;">
+<div class="row footer-contacto" style="margin:0 !important; padding: 0;"></div>
+</div>
+</div> 
+<div class="container-fluid" style="margin:0 ! important;padding: 0;">
+
+	<div class="row black-content-section" style="margin:0 ! important;padding: 0;">
+        <div class="col-md-6 col-sm-4 col-xs-4  d-flex justify-content-center">
+                <p class="text-white text-left text-sm-footer"> 
+                    contacto@tiendalimon.cl <br>
+                    ventas@tiendalimon.cl <br>
+                    asesorias@tiendalimon.cl<br>
+                    gourmet@tiendalimon.cl<br><br>
+                    Limón Market Place I Logística para emprender<br>
+                    Instagram  @tienda_limon_vitacura<br>
+                    www.tiendalimon.cl<br>
+                    www.online.tiendalimon.cl<br><br>
+                    Celular +56978521313<br>
+                    Ventas Espacios por Whatsapp +569- 69089587<br>
+                    Monseñor Escriva de Balaguer 6647, Vitacura
+                </p>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 ">
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <div style="width: 80%; float: left; text-align:center;">
+            <img class="img-fluid logo-footer" src="./assets/img/LOGO2_LIMON.png" alt="">
+           </div>
+        </div>
+    </div>
+</div>

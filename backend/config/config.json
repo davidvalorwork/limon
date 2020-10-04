@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "root",
+    "password": "hellomundo",
+    "database": "tienda_limon",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": 0
+  },
+  "test": {
+    "username": "root",
+    "password": "hellomundo",
+    "database": "tienda_limon",
+    "host": "",
+    "dialect": "",
+    "operatorsAliases": 0
+  },
+  "production": {
+    "username": "",
+    "password": "",
+    "database": "",
+    "host": "",
+    "dialect": "mysql",
+    "operatorsAliases": 0
+  }
+}

@@ -1,0 +1,84 @@
+<div class="container white-content">
+  <!--header-->
+ <header class="container">
+    <div class="row">
+      <!--  SOCIAL -->
+     <div class="col-sm-6 col-md-8 mt-3 float-left">
+       <a title="" target="_blank" ><img class="mr-1" src="./assets/icon/INSTAGRAM_ICONO_LOGO.png"></a>
+       <a title="" target="_blank" ><img class="mr-1" src="./assets/icon/FACEBOOK_ICONO_LOGO.png"></a>
+       <a title="" target="_blank" ><img class="mr-1" src="./assets/icon/WHATSAPP_ICONO_LOGO.png"></a>
+     </div>
+ 
+    <div class="col-sm-4 col-md-4" style="  width: 100%; float: left; text-align:right;" *ngIf="!usuario">
+       <a routerLink="login" class="button-login">Inicio de sesión</a>
+       <a routerLink="registro" class="button-register">Registrarme</a>
+     </div>
+ 
+       <!-- SHOP CAMBIO PASADO-->
+     <div class="col-3 mt-3 text-right" *ngIf="usuario">
+       <div class="float-rigth">
+       <a class="btn btn-sm" routerLink="carrito"><i class="fas fa-shopping-cart" 
+         style="font-size:25px"></i></a>
+        </div>
+     </div>
+     <div class="dropdown mr-3 mt-3">
+        
+       
+      <button mat-icon-button *ngIf="usuario"
+      class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+      >
+        <mat-icon >account_circle</mat-icon> 
+      </button>
+      <div class="dropdown-menu mr-5" aria-labelledby="dropdownMenuButton">
+        <!-- <a mat-button class="dropdown-item " [routerLink]="['/admin/perfil']" routerLinkActive="router-link-active" ><mat-icon>account_circle</mat-icon> Perfil</a> -->
+        <div>
+          <a mat-button class="dropdown-item" (click)="logout()" [routerLink]="['../../login']" routerLinkActive="router-link-active" >Cerrar Sesión</a>
+        </div>
+      </div>
+    </div>
+   </div>
+     <!--  LOGO -->
+     <div class="row">
+       <div class="col-12">
+         <img src="assets/img/LOGO_LIMON.png" class="img-logo" alt="LOGO LIMON">
+       </div>
+     </div>
+      <!--  NAV -->
+    <div class="nav-scroller py-2">
+     <hr class="black">
+     <nav class="nav d-flex justify-content-center" id="menu-principal">
+       <li class="selector-yellow">
+        <a routerLink="../" class="p-2 mr-4 text-decoration-none text-uppercase font-weight-bold text-black"  
+        ><i class="fas fa-shopping-cart" style="font-size:17px; margin-right:10px; color: #ffcc00;"
+         ></i>marketplace</a>
+       </li>
+       <li class="selector-yellow">
+          <a class="p-2 mr-4 ml-4 text-decoration-none text-uppercase font-weight-bold text-black"   
+          routerLink="nosotros">nosotros</a>
+        </li>
+        <li class="selector-yellow">
+          <a class="p-2 mr-4 ml-4 text-decoration-none text-uppercase font-weight-bold text-black"  
+          routerLink="servicios">servicios</a>
+        </li>
+        <li class="selector-yellow">
+        <a class="p-2 mr-4 ml-4 text-decoration-none text-uppercase font-weight-bold text-black"  
+        routerLink="arriendo">arrienda tu espacio</a>
+       </li>
+       <li class="selector-yellow">
+         <a class="p-2 mr-4 ml-4 text-decoration-none text-uppercase font-weight-bold text-black"  
+        routerLink="contacto">contacto/postulacion</a>
+      </li>
+
+     </nav>
+     <hr class="black">
+   </div>
+ </header>
+</div>
+ <!-- CONTENT -->
+ <mat-sidenav-container style="background: white; min-height: 100%">
+   <mat-sidenav-content >
+     <div class="white-content" style="min-height: 100%;">
+       <router-outlet></router-outlet>
+     </div>
+   </mat-sidenav-content>
+ </mat-sidenav-container>

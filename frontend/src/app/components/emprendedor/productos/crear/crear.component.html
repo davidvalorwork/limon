@@ -1,0 +1,67 @@
+<div>
+    <h2>Crear Producto</h2>
+</div>
+<form [formGroup]="form" class="row" (ngSubmit)="crear(form.value)">
+    <div class="col-lg-3 col-md-6">
+        <mat-form-field appearance=""  style="width: 100%;">
+            <mat-label>Nombre Producto</mat-label>
+            <input matInput type="text" formControlName="nombre_producto"/>
+        </mat-form-field>
+    </div>
+    
+    <div class="col-lg-3 col-md-6">
+        <mat-form-field appearance="" style="width: 100%;">
+            <mat-label>Descripción Producto</mat-label>
+            <input matInput type="text" formControlName="descripcion_producto"/>
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <mat-form-field appearance="" style="width: 100%;">
+            <mat-label>Precio CLP</mat-label>
+            <input matInput type="number" formControlName="precio"/>
+        </mat-form-field>
+    </div>
+ 
+    <div class="col-lg-3 col-md-6">
+        <mat-form-field appearance="" style="width: 100%;">
+            <mat-label>Categoria del Producto</mat-label>
+            <mat-select  formControlName="categoriaIdCategorias">
+              <mat-option *ngFor="let categoria of categoriasBD" [value]="categoria.id_categorias">
+                {{categoria.nombre_categoria}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="col-12">
+        
+        
+        <div class="custom-file mt-3" (click)="onClick()">
+            <label class="custom-file-label">Seleccione una imagen del producto...</label>
+            <input type="file" class="custom-file-input" #fileUpload id="fileUpload" name="fileUpload" 
+                multiple="multiple" accept="image/*" style="display:none;" />
+        </div>
+    </div>
+
+
+    <h3 class="mt-3 col-12 text-center" *ngIf="imagenes.length !==0">
+        <b>Imagenes</b>
+    </h3>
+    <div class="row col-12">
+        <div *ngFor="let img of imagenes; let i = index">
+            <div class="col-1">
+                <img class="img" [src]="url_api+img"/>
+                <a mat-icon-button style="color:red"
+                (click)="popImg(img,'imagenes')">
+                    <mat-icon>delete</mat-icon>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="text-center col-12 mt-4">
+        <button mat-raised-button
+            [disabled]="form.status !== 'VALID' || imagenes.length===0 || submit===1" 
+            color="primary" type="submit">Crear</button>
+    </div>
+</form>

@@ -1,0 +1,95 @@
+<div class="text-center">
+  <h1>Datos Postulación</h1>
+  <div class="col-12 mt-3 mb-3 text-center" *ngIf="data.url_logo !== ''">
+    <img 
+    style="width: 100px; height: 100px; border-radius: 50%;"
+    [src]="url_api+data.url_logo" />
+  </div>
+  <form [formGroup]="empresasForm" class="row">
+    <mat-form-field appearance="outline" class="col-4">
+      <mat-label>Marca</mat-label>
+      <input matInput [readonly]="true" formControlName="marca">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="col-4">
+      <mat-label>Razón Social</mat-label>
+      <input matInput [readonly]="true" formControlName="razon_social">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="col-4">
+      <mat-label>Rut</mat-label>
+      <input matInput [readonly]="true" formControlName="rut">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="col-4">
+      <mat-label>Giro</mat-label>
+      <input matInput [readonly]="true" formControlName="giro">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="col-4">
+      <mat-label>Dirección</mat-label>
+      <input matInput [readonly]="true" formControlName="direccion">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="col-4">
+      <mat-label>Correo</mat-label>
+      <input matInput [readonly]="true" formControlName="correo">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="col-4">
+      <mat-label>Nombre de Contacto</mat-label>
+      <input matInput [readonly]="true" formControlName="nombre_contacto">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="col-4">
+      <mat-label>Teléfono de Contacto</mat-label>
+      <input matInput [readonly]="true" formControlName="telefono_contacto">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="col-4">
+      <mat-label>Link Video</mat-label>
+      <input matInput [readonly]="true" formControlName="link_video">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="col-4">
+      <mat-label>Instagram</mat-label>
+      <input matInput [readonly]="true" formControlName="instagram">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="col-4">
+      <mat-label>Descripción Negocio</mat-label>
+      <input matInput type="textarea" [readonly]="true" formControlName="descripcion_negocio">
+    </mat-form-field>
+    <div class="col-4 mt-2">
+      <button mat-raised-button color="primary" (click)="productos(empresasForm.value.img_productos)">Ver Productos</button>
+    </div>
+    <div class="row col-12">
+      <div class="col-12 text-center mb-3">Factura Propia <br>
+        <mat-icon style="color:green" *ngIf="data.factura === 'true'">done</mat-icon> 
+        <mat-icon style="color:red" *ngIf="data.factura === 'false'">highlight_off</mat-icon>
+      </div>
+    </div>
+
+    <div class="row col-12">
+      <div class="col-4 text-center">Arrendar <br>
+        <mat-icon style="color:green" *ngIf="data.permiso_arriendo === '1'">done</mat-icon> 
+        <mat-icon style="color:red" *ngIf="data.permiso_arriendo === '0'">highlight_off</mat-icon>
+      </div>
+      <div class="col-4 text-center">Subir Servicios <br>
+        <mat-icon style="color:green" *ngIf="data.permiso_servicio === '1'">done</mat-icon> 
+        <mat-icon style="color:red" *ngIf="data.permiso_servicio === '0'">highlight_off</mat-icon>
+      </div>
+      <div class="col-4 text-center">Subir Productos <br> 
+        <mat-icon style="color:green" *ngIf="data.permiso_productos === '1'">done</mat-icon> 
+        <mat-icon style="color:red" *ngIf="data.permiso_productos === '0'">highlight_off</mat-icon>
+      </div>
+    </div>
+    <div class="col-12 text-center mt-5">
+      <button mat-raised-button
+      style="
+        background: green;
+        color: white;
+      "
+      (click)="aceptar()"
+      [disabled]="submit === 1">Aceptar</button>
+      <button mat-raised-button
+      style="
+        background: red;
+        color:white;
+      "
+      (click)="rechazar(data.id_usuarios)"
+      class="ml-3"
+      [disabled]="submit === 1">Rechazar</button>
+    </div>
+  </form>
+</div>

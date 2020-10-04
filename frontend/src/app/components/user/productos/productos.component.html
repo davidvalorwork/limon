@@ -1,0 +1,189 @@
+<div class="container white-content"> 
+<div class="row search-section form-control-center">
+    <div class="form-control-feedback has-search">
+      <span class=" form-control-feedback"></span>
+      <input type="text" class="form-control form-control-lg" placeholder="¿Que buscas?">
+    </div>
+</div>
+<div class="justify-content-center">
+  <p class="lineYellow">
+    <span class="font-weight-bold text-black" style="font-size:18px;">VITRINEA POR CATEGORÍA</span>
+</p>
+</div>
+<div class="">
+  <div class="row">
+    <div class="col-md-3 mt-2">
+      <h5 class="font-weight-bold text-uppercase mb-3">CATEGORÍAS</h5>
+      <ul class="list-none float-left">
+        <li class="text-uppercase text-grey" *ngFor="let categoria of categorias"
+        style="font-size: 11px;">*<a (click)="goCategoria(categoria.id_categorias)" routerLink="/"> {{categoria.nombre_categoria}}</a></li>
+      
+      </ul>
+    </div> 
+      <div class="col-md-9 mt-2 division mx-auto">
+        <div class="row justify-content-center">
+          <div class="col-xs-6 col-md-4">
+            <div class="content">
+          <a  routerLink="/" (click)="goCategoria('1')">
+          <div class="content-overlay" (click)="goCategoria('1')"></div>
+          <img [src]="url_api+'uploads/imagenes_categorias/PRE_PISCO.png'"  class="img-fluid content-image" width="250px" height="250px" alt="Producto">
+           <div class="content-details fadeIn-bottom" >
+             <h6 class="content-title" >Ver mas</h6>
+          </div>
+           </a>
+        </div>
+        <div class="mt-2" style="margin-left:10px;">
+          <h6 class="font-weight-bold text-grey">GOURMET / SUPERMERCADO</h6>
+         
+        </div>
+          </div>
+          <div class="col-xs-6 col-md-4">
+            <div class="content">
+          <a  routerLink="/" (click)="goCategoria('10')">
+          <div class="content-overlay" (click)="goCategoria('10')"></div>
+          <img [src]="url_api+'uploads/imagenes_categorias/CAT_COLLAR.png'" class="img-fluid content-image" width="250px" height="250px" alt="Producto">
+           <div class="content-details fadeIn-bottom">
+             <h6 class="content-title">Ver mas</h6>
+          </div>
+           </a>
+        </div>
+        <div class="mt-2" style="margin-left:10px;">
+          <h6 class="font-weight-bold text-grey">BELLEZA</h6>
+         
+        </div>
+          </div>
+          <div class="col-xs-6 col-md-4">
+            <div class="content">
+          <a  routerLink="/" (click)="goCategoria('3')">
+          <div class="content-overlay" (click)="goCategoria('3')"></div>
+          <img [src]="url_api+'uploads/imagenes_categorias/macetas_mktpl.jpg'" class="img-fluid content-image" width="250px" height="250px" alt="Producto">
+           <div class="content-details fadeIn-bottom">
+             <h6 class="content-title">Ver mas</h6>
+          </div>
+           </a>
+        </div>
+        <div class="mt-2" style="margin-left:10px;">
+          <h6 class="font-weight-bold text-grey">DECORACIÓN/HOGAR</h6>
+         
+        </div>
+          </div>
+          <div class="col-xs-6 col-md-4">
+            <div class="content">
+          <a  routerLink="/" (click)="goCategoria('1')">
+          <div class="content-overlay" (click)="goCategoria('12')"></div>
+          <img [src]="url_api+'uploads/imagenes_categorias/CAT_LAMPARA.png'" class="img-fluid content-image" width="250px" height="250px" alt="Producto">
+           <div class="content-details fadeIn-bottom">
+             <h6 class="content-title">Ver mas</h6>
+          </div>
+           </a>
+        </div>
+        <div class="mt-2" style="margin-left:10px;">
+          <h6 class="font-weight-bold text-grey">SUSTENTABILIDAD/ECOLOGÍA</h6>
+         
+        </div>
+          </div>
+          <div class="col-xs-6 col-md-4">
+            <div class="content">
+          <a  routerLink="/" (click)="goCategoria('5')">
+          <div class="content-overlay" (click)="goCategoria('5')"></div>
+          <img [src]="url_api+'uploads/imagenes_categorias/CAMISA_BART_MKTPL.jpg'" class="img-fluid content-image" width="250px" height="250px" alt="Producto">
+           <div class="content-details fadeIn-bottom">
+             <h6 class="content-title">Ver mas</h6>
+          </div>
+           </a>
+        </div>
+        <div class="mt-2" style="margin-left:10px;">
+          <h6 class="font-weight-bold text-grey">NIÑOS</h6>
+         
+        </div>
+          </div>
+          <div class="col-xs-6 col-md-4">
+            <div class="content">
+          <a  routerLink="/" (click)="goCategoria('6')">
+          <div class="content-overlay" (click)="goCategoria('6')"></div>
+          <img [src]="url_api+'uploads/imagenes_categorias/CAT_ZAPATO.png'" class="img-fluid content-image" width="250px" height="250px" alt="Producto">
+           <div class="content-details fadeIn-bottom">
+             <h6 class="content-title">Ver mas</h6>
+          </div>
+           </a>
+        </div>
+        <div class="mt-2" style="margin-left:10px;">
+          <h6 class="font-weight-bold text-grey">JUVENIL</h6>
+         
+        </div>
+          </div>
+          <div class="col-xs-6 col-md-4">
+            <div class="content">
+          <a  routerLink="/" (click)="goCategoria('7')">
+          <div class="content-overlay" (click)="goCategoria('7')"></div>
+          <img [src]="url_api+'uploads/imagenes_categorias/CAT_YOGA.png'" class="img-fluid content-image" width="250px" height="250px" alt="Producto">
+           <div class="content-details fadeIn-bottom">
+             <h6 class="content-title">Ver mas</h6>
+          </div>
+           </a>
+        </div>
+        <div class="mt-2" style="margin-left:10px;">
+          <h6 class="font-weight-bold text-grey">DEPORTE</h6>
+         
+        </div>
+          </div>
+          <div class="col-xs-6 col-md-4" (click)="goCategoria('8')">
+            <div class="content">
+          <a routerLink="/" (click)="goCategoria('8')" >
+          <div class="content-overlay" (click)="goCategoria('8')"></div>
+          <img [src]="url_api+'uploads/imagenes_categorias/CAT_VESTIDO1.png'" class="img-fluid content-image" width="250px" height="250px" alt="Producto">
+           <div class="content-details fadeIn-bottom">
+             <h6 class="content-title">Ver mas</h6>
+          </div>
+           </a>
+        </div>
+        <div class="mt-2" style="margin-left:10px;">
+          <h6 class="font-weight-bold text-grey">MODA FAMILIA</h6>
+         
+        </div>
+          </div>
+          <div class="col-xs-6 col-md-4">
+            <div class="content">
+          <a  routerLink="/" (click)="goCategoria('9')">
+          <div class="content-overlay" (click)="goCategoria('9')"></div>
+          <img [src]="url_api+'uploads/imagenes_categorias/CAT_BEBE.png'" class="img-fluid content-image" width="250px" height="250px" alt="Producto">
+           <div class="content-details fadeIn-bottom">
+             <h6 class="content-title">Ver mas</h6>
+          </div>
+           </a>
+        </div>
+          <div class="mt-2" style="margin-left:10px;">
+            <h6 class="font-weight-bold text-grey">BEBÉS</h6>
+           
+          </div>
+          </div>
+
+     </div>
+   </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 mt-2 d-flex justify-content-center">
+    <img src="./assets/img/BANNER_INFERIOR.png" class="img-fluid w-100" alt="Producto">
+  </div>
+</div>
+<div class="container white-content">
+  <div class="row mt-5">
+    <div class="col-md-4 justify-content-center">
+      <a >
+      <img src="./assets/img/LOGO_ALIANZA_BUENOBUENO.png" class="float-left" alt="Marcas">
+     </a>
+      </div>
+      <div class="col-md-4 justify-content-center">
+        <a >
+        <img src="./assets/img/LOGO_ALIANZA_VITACURA.png" class="img-fluid" alt="Marcas">
+       </a>
+      </div>
+      <div class="col-md-4 justify-content-center">
+          <a >
+          <img src="./assets/img/LOGO_ALIANZA_CASPLANETA.png" class="float-right" alt="Marcas">
+        </a>
+        </div> 
+  </div> 
+ </div>
+</div>

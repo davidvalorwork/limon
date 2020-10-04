@@ -1,0 +1,287 @@
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<!-- <div class="card-header">
+				<h3>Registro</h3>
+				
+			</div> -->
+			<p style="color:white; text-align:center" class="mt-4">Postulación Tienda Limón</p>
+			<!-- FORMULARIO EMPRESA -->
+			<div class="card-body" *ngIf="TipoRegistro === 2">
+				<form [formGroup]="empresasForm" class="row" (ngSubmit)="postular(empresasForm.value)">
+
+					<div class="col-12 text-center big">
+						<label style="color:white">¿Para cuales servicios desea postular?</label>
+						<section class="example-section">
+							<mat-checkbox formControlName="permiso_arriendo" class="check mr-3">Arrendar</mat-checkbox>
+							<mat-checkbox formControlName="permiso_productos" class="check mr-3">Vender Productos</mat-checkbox>
+							<mat-checkbox formControlName="permiso_servicio" class="check">Ofrecer Servicios</mat-checkbox>
+						</section>
+					</div>
+
+					<!-- LOGO -->
+					<div class="row mb-5 col-12"><div class="col-12">
+						<div class="custom-file mt-3" (click)="onClick(1)">
+								<label class="custom-file-label" *ngIf="foto_perfil === ''">Seleccione su logo... (Opcional)</label>
+								<label class="custom-file-label" *ngIf="foto_perfil !== ''">Edite su logo...</label>
+								<input type="file" class="custom-file-input" #fileUpload id="fileUpload" name="fileUpload" 
+										multiple="multiple" accept="image/*" style="display:none;" />
+						</div>
+					</div>
+					<div class="col-12 mt-3 text-center" *ngIf="foto_perfil !== ''">
+							<img 
+							style="width: 100px; height: 100px; border-radius: 50%;"
+							[src]="url_api+foto_perfil" />
+					</div></div>
+
+
+					<!-- MARCA -->
+					<div class="form-control-group col-6">
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input class="form-control" formControlName="marca" 
+							type="text" placeholder="Marca">
+						</div>
+						<div>
+							<mat-error *ngIf="empresasForm.get('marca').hasError('required') 
+												&& empresasForm.get('marca').dirty"
+							class="error">Este campo es requerido</mat-error>
+						</div>
+					</div>
+
+
+					<!-- NOMBRE COMPLETO O RAZON SOCIAL -->
+					<div class="form-control-group col-6">
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input class="form-control" formControlName="razon_social" 
+							type="text" placeholder="Razón Social">
+						</div>
+						<div>
+							<mat-error *ngIf="empresasForm.get('razon_social').hasError('required') 
+												&& empresasForm.get('razon_social').dirty"
+							class="error">Este campo es requerido</mat-error>
+						</div>
+					</div>
+
+
+					<!-- RUT CLIENTE -->
+					<div class="form-control-group col-6">
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-address-card"></i></span>
+							</div>
+							<input class="form-control" formControlName="rut" type="text" placeholder="Rut">
+						</div>
+						<div>
+							<mat-error *ngIf="empresasForm.get('rut').hasError('required')
+							&& empresasForm.get('rut').dirty"
+							class="error">Este campo es requerido</mat-error>
+						</div>
+					</div>
+					
+					<!-- GIRO -->
+					<div class="form-control-group col-6">
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-address-book"></i></span>
+							</div>
+							<input class="form-control" formControlName="giro" type="text" placeholder="Giro">
+						</div>
+						<div>
+							<mat-error *ngIf="empresasForm.get('giro').hasError('required')
+							&& empresasForm.get('giro').dirty"
+							class="error">Este campo es requerido</mat-error>
+						</div>
+					</div>
+
+					<!-- DIRECCION COMPLETA -->
+					<div class="form-control-group col-6">
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-address-card"></i></span>
+							</div>
+							<input class="form-control"
+							 formControlName="direccion" type="text" 
+							 placeholder="Dirección Completa">
+						</div>
+						<div>
+							<mat-error *ngIf="empresasForm.get('direccion').hasError('required')
+							&& empresasForm.get('direccion').dirty"
+							class="error">Este campo es requerido</mat-error>
+						</div>
+					</div>
+
+
+					<!-- EMAIL  -->
+					<div class="form-control-group col-6">
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-envelope"></i></span>
+							</div> 	
+							<input class="form-control" formControlName="correo" type="text" placeholder="Correo">
+						</div>
+						<div>
+							<div *ngIf="empresasForm.get('correo').invalid && (empresasForm.get('correo').dirty || empresasForm.get('correo').touched)">
+								<mat-error *ngIf="empresasForm.get('correo').hasError('required')
+								&& empresasForm.get('correo').dirty"
+								class="error">Este campo es requerido</mat-error>
+								<mat-error *ngIf="!empresasForm.get('correo').hasError('required')"
+								class="error">Este correo es invalido</mat-error>
+							</div>
+						</div>
+					</div>
+
+
+
+					<!-- NOMBRE DEL CONTACTO  -->
+					<div class="form-control-group col-6">
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input class="form-control"
+							 formControlName="nombre_contacto" type="text" 
+							 placeholder="Nombre de Contacto">
+						</div>
+						<div>
+							<mat-error *ngIf="empresasForm.get('nombre_contacto').hasError('required') 
+												&& empresasForm.get('nombre_contacto').dirty"
+							class="error">Este campo es requerido</mat-error>
+						</div>
+					</div>
+
+
+					<!-- TELEFONO DEL CONTACTO -->
+					<div class="form-control-group col-6">
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-phone"></i></span>
+							</div>
+							<input class="form-control" 
+							formControlName="telefono_contacto" type="number" 
+							placeholder="Teléfono">
+						</div>
+						<div>
+							<mat-error *ngIf="empresasForm.get('telefono_contacto').hasError('required')
+							&& empresasForm.get('telefono_contacto').dirty"
+							class="error">Este campo es requerido</mat-error>
+						</div>
+					</div>
+
+					<!-- INSTAGRAM -->
+					<div class="form-control-group col-6">
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input class="form-control"
+							 formControlName="instagram" type="text" 
+							 placeholder="Usuario de Instagram (Opcional)">
+						</div>
+						<div>
+							<mat-error *ngIf="empresasForm.get('instagram').hasError('required') 
+												&& empresasForm.get('instagram').dirty"
+							class="error">Este campo es requerido</mat-error>
+						</div>
+					</div>
+
+					<!-- DESCRIPCION DEL NEGOCIO -->
+					<div class="form-control-group col-6">
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-phone"></i></span>
+							</div>
+							<textarea class="form-control" 
+							formControlName="descripcion_negocio" type="textarea" 
+							placeholder="Descripción del Negocio"></textarea>
+						</div>
+						<div>
+							<mat-error *ngIf="empresasForm.get('descripcion_negocio').hasError('required')
+							&& empresasForm.get('descripcion_negocio').dirty"
+							class="error">Este campo es requerido</mat-error>
+						</div>
+					</div>
+
+					
+
+					
+
+					<!-- LINK VIDEO DE PRESENTACION -->
+					<div class="form-control-group col-12">
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input class="form-control"
+							 formControlName="link_video" type="text" 
+							 placeholder="Ingrese link youtube de su video de presentación (Opcional)">
+						</div>
+						<div>
+							<mat-error *ngIf="empresasForm.get('link_video').hasError('required') 
+												&& empresasForm.get('link_video').dirty"
+							class="error">Este campo es requerido</mat-error>
+						</div>
+					</div>
+
+
+					<!-- POSEE FACTURA -->
+					<div class="col-12 text-center">
+						<label style="color:white">¿Posee Factura?</label>
+						<br>
+						<mat-radio-group aria-label="Select an option" formControlName="factura">
+							<mat-radio-button value="true" class="check mr-3">Si</mat-radio-button>
+							<mat-radio-button value="false" class="check">No</mat-radio-button>
+						</mat-radio-group>
+					</div>
+
+					<!-- IMAGENES PRODUCTOS -->
+					<div class="row mb-5 col-12"><div class="col-12">
+						<div class="custom-file mt-3" (click)="onClick(2)">
+								<label class="custom-file-label">
+									Seleccione imagenes de sus productos... (Opcional)
+								</label>
+								<input type="file" class="custom-file-input" #fileUpload2 id="fileUpload2" name="fileUpload" 
+										multiple="multiple" accept="image/*" style="display:none;" />
+							</div>
+						</div>
+						<div class="col-12 mt-3 text-center" *ngIf="img_productos.length !== 0">
+							<div class="row text-center">
+								<div class="col-3" *ngFor="let producto of img_productos">
+										<img 
+											style="width: 100px; height: 100px;"
+											[src]="url_api+producto" />
+								</div>
+							</div>
+
+							
+								
+						</div>
+					</div>
+
+				
+					<div class="col-12 text-center mt-3">
+						<label style="color:white">Acuerdo <a href="#">Descargar</a></label>
+						<section class="example-section">
+							<mat-checkbox formControlName="terminos" class="check">He leido y acepto el acuerdo</mat-checkbox>
+						</section>
+					</div>
+					
+					<div class="form-group col-12 mt-4">
+						<input type="submit" value="Enviar" class="btn float-right login_btn" 
+							[disabled]="
+							empresasForm.status !== 'VALID'
+							&& empresasForm.value.factura === ''
+							&& submit === false">
+					</div>
+
+					
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
