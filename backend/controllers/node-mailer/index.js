@@ -6,7 +6,7 @@ const transporter = nodemailer.createTransport({
   port:'465',
   auth: {
     user: 'tiendalimoncl0@gmail.com', // colocar usuario gmail con bajo nivel de seguridad
-    pass: 'tiendalimoncl012345'//password de ese user
+    pass: 'tiendalimoncl012345678'//password de ese user
   }
 });
 module.exports={

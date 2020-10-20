@@ -22,12 +22,19 @@ const inicializar = async(db) => {
         tipo_usuario: 'Postulacion',
         borrado:0
     }
-    const usuario_admin={
-        clave: '$2a$10$a4JzBQ1c/VLBSLgdVJ3X9uo7/oUSFBvnycRiv4GQS1DppK1EGn7KK',
-        correo: 'admin@admin.com',
+    const usuario_admin1={
+        clave: '$2a$10$gF82S0Logoxlm3jSRvqjRuMa.M2tj32o0nrpqS1DOitmGRYmTsXjC',
+        correo: 'contacto@tiendalimon.cl',
         tiposUsuarioIdTiposUsuarios:3,
         borrado:0
     }
+    const usuario_admin2={
+        clave: '$2a$10$gF82S0Logoxlm3jSRvqjRuMa.M2tj32o0nrpqS1DOitmGRYmTsXjC',
+        correo: 'stock@tiendalimon.cl',
+        tiposUsuarioIdTiposUsuarios:3,
+        borrado:0
+    }
+    //LIMON2019
     const usuario_prueba={
         clave: '$2a$10$a4JzBQ1c/VLBSLgdVJ3X9uo7/oUSFBvnycRiv4GQS1DppK1EGn7KK',
         correo: 'prueba@gmail.com',
@@ -51,7 +58,9 @@ const inicializar = async(db) => {
         .catch(err=>console.log(err));
     await db.tipos_usuarios.create(tipo_postulacion).then(result=>console.log("Tipo de usuario: Administrador. Insertado"))
         .catch(err=>console.log(err));
-    await db.usuarios.create(usuario_admin).then(result=>console.log("Usuario admin 12345678 insertado."))
+    await db.usuarios.create(usuario_admin1).then(result=>console.log("Usuario admin 12345678 insertado."))
+        .catch(err=>console.log(err));
+    await db.usuarios.create(usuario_admin2).then(result=>console.log("Usuario admin 12345678 insertado."))
         .catch(err=>console.log(err));
     await db.usuarios.create(usuario_prueba).then(result=>console.log("Usuario prueba 12345678 insertado."))
         .catch(err=>console.log(err));
@@ -95,9 +104,9 @@ const inicializar = async(db) => {
     
 
     const sucursales = [
-        {nombre_sucursal:"Casa Emprendedor",borrado:0},
-        {nombre_sucursal:"Grupo Vag",borrado:0},
-        {nombre_sucursal:"Bueno Bueno",borrado:0},
+        {direccion:"Santo Domingo N° 566, Santiago, Chile",nombre_sucursal:"Casa Emprendedor",borrado:0},
+        {direccion:"Santo Domingo N° 566, Santiago, Chile",nombre_sucursal:"Grupo Vag",borrado:0},
+        {direccion:"Santo Domingo N° 566, Santiago, Chile",nombre_sucursal:"Bueno Bueno",borrado:0},
     ]
 
     for(let i in sucursales){

@@ -1,0 +1,162 @@
+<div id="app">
+  <!-- Header -->
+  <header class="container">
+    <h1>Carrito de Compras</h1>
+    <span class="count">{{ pedidos.length }} productos</span>
+  </header>
+  <!-- End Header -->
+
+  <!-- Product List -->
+  <section class="container">
+    <div *ngIf="pedidos.length > 0">
+      <ul class="products" *ngFor="let producto of pedidos; let i = index">
+        <li class="row" *ngIf="producto.producto">
+          <div class="col left">
+            <div class="thumbnail">
+              <a routerLink="/">
+                <img
+                  [src]="urlApi + producto.producto.imagenes.split(',')[0]"
+                />
+              </a>
+            </div>
+            <div class="detail">
+              <div class="name">
+                <a routerLink="/">{{ producto.producto?.nombre_producto }}</a>
+              </div>
+              <div class="description">{{ producto.producto.descripcion_producto?.substring(0,20) }}...</div>
+              <div class="price">$ {{ producto.producto.precio }}</div>
+            </div>
+          </div>
+
+          <div class="col right">
+            <div class="quantity">
+              <input
+                type="number"
+                class="quantity"
+                [value]="pedidos2[i].cantidad"
+                (keyup)="cambiarCantidad($event, i)"
+              />
+            </div>
+
+            <div class="remove" (click)="eliminar(pedidos2[i].id_pedidos)">
+              <svg
+                class="close"
+                xmlns="//www.w3.org/2000/svg"
+                xmlns:xlink="//www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                viewBox="0 0 60 60"
+                enable-background="new 0 0 60 60"
+                xml:space="preserve"
+              >
+                <polygon
+                  points="38.936,23.561 36.814,21.439 30.562,27.691 24.311,21.439 22.189,23.561 28.441,29.812 22.189,36.064 24.311,38.186 30.562,31.934 36.814,38.186 38.936,36.064 32.684,29.812"
+                ></polygon>
+              </svg>
+            </div>
+          </div>
+        </li>
+        <li class="row" *ngIf="producto.service">
+          <div class="col left">
+            <div class="thumbnail">
+              <a routerLink="/">
+                <img
+                  [src]="urlApi + producto.service.imagenes.split(',')[0]"
+                />
+              </a>
+            </div>
+            <div class="detail">
+              <div class="name">
+                <a routerLink="/">{{ producto.service?.nombre_servicio }}</a>
+              </div>
+              <div class="description">{{ producto.service.descripcion_servicio.substring(0,20) }}...</div>
+              <div class="price">$ {{ producto.service.precio }}</div>
+            </div>
+          </div>
+
+          <div class="col right">
+            <div class="quantity">
+              <input
+                type="number"
+                class="quantity"
+                [value]="pedidos2[i].cantidad"
+                (keyup)="cambiarCantidad($event, i)"
+              />
+            </div>
+
+            <div class="remove" (click)="eliminar(pedidos2[i].id_pedidos)">
+              <svg
+                class="close"
+                xmlns="//www.w3.org/2000/svg"
+                xmlns:xlink="//www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                viewBox="0 0 60 60"
+                enable-background="new 0 0 60 60"
+                xml:space="preserve"
+              >
+                <polygon
+                  points="38.936,23.561 36.814,21.439 30.562,27.691 24.311,21.439 22.189,23.561 28.441,29.812 22.189,36.064 24.311,38.186 30.562,31.934 36.814,38.186 38.936,36.064 32.684,29.812"
+                ></polygon>
+              </svg>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="pedidos.length === 0" class="empty-product">
+      <h3>No hay productos en tu carrito</h3>
+      <button routerLink="../">Seguir comprando</button>
+    </div>
+  </section>
+  <section class="container">
+    <div class="promotion">
+      Es necesario que ingrese su region y comuna en la cual desea recibir sus
+      productos para calcular el precio del envio.
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-label>Seleccione la region del envio</mat-label>
+        <mat-select [(ngModel)]="region" (ngModelChange)="regionChange($event)">
+          <mat-option *ngFor="let food of regiones" [value]="food.id">
+            {{ food.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" *ngIf="comunasReg.length > 0">
+        <mat-label>Seleccione la comuna del envio</mat-label>
+        <mat-select [(ngModel)]="comuna" (ngModelChange)="getPagos($event)">
+          <mat-option *ngFor="let food of comunasReg" [value]="food.id">
+            {{ food.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" *ngIf="comunasReg.length > 0">
+        <mat-label>Indique su dirección específica</mat-label>
+        <input matInput type="text" [(ngModel)]="direccionEspecifica"/>
+      </mat-form-field>
+    </div>
+    <div class="summary">
+      <ul>
+        <li>
+          Subtotal <span>$ {{ montoTotal }}</span>
+        </li>
+        <li *ngIf="precioEnvio">
+          Envío Shippit <span>$ {{ precioEnvio }}</span>
+        </li>
+        <li class="total" *ngIf="precioMasEnvio">
+          Total <span>$ {{ precioMasEnvio }}</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="checkout mb-5">
+      <button
+        type="button"
+        *ngIf="precioMasEnvio > 350 && comuna && direccionEspecifica !== ''"
+        (click)="pagar()"
+      >
+        Pagar
+      </button>
+    </div>
+  </section>
+</div>

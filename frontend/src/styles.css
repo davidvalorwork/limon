@@ -9,10 +9,16 @@ html,body{
   }
 body { margin: 0;  font-family: Ubuntu, sans-serif;}
 .err-snackbar {
-  color: white;
+  background-color: red;
+  top: 15px !important;
+  right: -10px;
+  position: absolute;
 }
 .success-snackbar { 
-  color: white;
+  background-color: green;
+  top: 15px !important;
+  right: -10px;
+  position: absolute;
 }
 /* .mat-icon{
   color: #1567d8;
@@ -40,12 +46,60 @@ body { margin: 0;  font-family: Ubuntu, sans-serif;}
 .size-content50{
   width: 50%;
 }
+.size-content100{
+  width: 100%;
+}
+.size-content60{
+  width: 60%;
+}
+.service-sm-img{
+  margin-top: 30px;
+}
+@media (max-width: 600px) {
+  .size-content100{
+    width: 50%;
+  }
+}
+@media (max-width: 600px) {
+  .service-md-img{
+    width: 100px;
+    height: 100px;
+ 
+ }
+ .service-xs-img{
+  width: 50px;
+  height: 50px;
+
+}
+  }
+
+
 @media (max-width: 800px) {
   .size-content50{
     width: 100%;
     }
   }
-
+ @media (max-width: 900px) {
+    .size-content60{
+      width: 20%;
+      }
+.service-sm-img{
+  width: 80px;
+  height: 80px;
+  margin-top: 30px;
+}
+}
+@media (max-width: 600px) {
+  .size-content60{
+    width: 20%;
+    }
+.service-sm-img{
+width: 80px;
+height: 80px;
+margin:auto;
+}
+}
+  
 /* color background */
 .white-content{
     background-color: white;
@@ -89,6 +143,12 @@ body { margin: 0;  font-family: Ubuntu, sans-serif;}
   width: 100%;
   height: 600px;
 }
+@media (max-width: 700px) {
+  .white-content-section{
+
+    height: 800px;
+  }
+  }
 .yellow-content-rounded{
 background-color: #ffcc00;
 border-radius: 20px / 20px;
@@ -98,7 +158,7 @@ height: 400px;
 .yellow-content-rounded{
   background-color: #ffcc00;
   border-radius: 20px / 20px;
-  height: 600px;
+  height: 700px;
   }
 }
 .black-content{
@@ -230,6 +290,19 @@ hr.yellow {
     margin: auto;
   }
 
+  .card-sm{
+    width: 12rem;
+  }
+
+  
+@media (max-width: 700px) {
+  .card-sm{
+    width: 22rem;
+  }
+
+}
+
+
 
 
 /* banner*/
@@ -297,6 +370,7 @@ hr.yellow {
   left: 50%;
   margin-left: -50px !important;  /* 50% of your logo width */
   display: block;
+  margin: 15px;
 }
 
 /* buttons auth */
@@ -312,7 +386,7 @@ a.button-login {
   font-weight: bold;
   margin: 3px 10px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 14px;
 }
 
 a.button-register {
@@ -328,7 +402,7 @@ a.button-register {
   margin: 4px 10px;
   cursor: pointer;
   text-decoration: none;
-  margin-top: 10px;
+  margin-top: 14px;
 }
 /*separation category*/
 div.division {
@@ -439,10 +513,38 @@ div.division {
   .card-grey{
      background-color: rgb(160, 160, 160);
  }
+
+ .text-blacki{
+  color: #000000;
+}
+
+.text-blacki:hover {
+  color: #ffcc00;
+}
  .card-white{
   background-color: white;
-  width: 13rem;
+  width: 12rem;
   height: 7rem;
+}
+.font-md{
+  font-size: 14px;
+ }
+
+@media (max-width: 700px) {
+  .card-white{
+    background-color: white;
+    width: 12rem;
+    height: 5rem;
+  }
+  
+  .form-control-feedback{
+    width: 400px;
+   }
+  
+  .card-white-2{
+    width: 12rem;
+    height: 5rem;
+  }
 }
 .card-white-2{
   background-color: white;
@@ -462,6 +564,11 @@ background-size: cover;
 background-color: white;
 height: 500px;
 } 
+@media (max-width: 600px) {
+  .row.rosa-content {
+  height: 600px;
+  }
+}
 .row.linegrey-content {
   background-image: url('./assets/img/FONDO_LINEASCOLORES.png');   
  background-position: center center;
@@ -477,6 +584,11 @@ background-size: cover;
 background-color: white;
 height: 800px;
 }
+@media (max-width: 600px) {
+  .row.rosa-content {
+  height: 900px;
+  }
+}
 
 
 .row.limon-content{
@@ -486,6 +598,11 @@ height: 800px;
 background-size: cover;
 background-color: white;
 height: 600px;
+}
+@media (max-width: 600px) {
+  .row.limon-content{
+  height: 900px;
+  }
 }
 
 .row.lineyellow-content {
@@ -506,6 +623,18 @@ height: 600px;
   width: 100%;
   height: 600px; 
 }
+@media (max-width: 600px) {
+  .point-colors-content {
+
+    height: 1800px; 
+  }
+  .font-sm{
+    font-size:10px;
+  }
+  
+}
+
+
 .point-white-content {
   background-image: url('./assets/img/FONDO_PUNTOSBLANCOS1.png');
   background-position: center center;
@@ -513,6 +642,15 @@ height: 600px;
   background-size: cover;
   background-color: white;
   height: 600px;
+}
+@media (max-width: 600px) {
+  .point-white-content {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+    height: 2000px;
+  }
+  
 }
 
 

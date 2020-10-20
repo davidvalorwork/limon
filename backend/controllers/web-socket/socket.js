@@ -4,8 +4,8 @@ module.exports={
   init:(app)=>{
     const socketIO = require('socket.io');
     const server = require('http').createServer();
-    server.listen(5000,()=>{
-      console.log("Socket escuchando en el puerto 5000 address: http://localhost:5000")
+    server.listen(3100,()=>{
+      console.log("Socket escuchando en el puerto 3009 address: http://localhost:3009")
     });
     const io = socketIO(server)
 

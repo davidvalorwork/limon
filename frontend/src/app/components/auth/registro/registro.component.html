@@ -1,302 +1,275 @@
 <div class="container">
-	<div class="d-flex justify-content-center h-100">
-		<div class="card">
-			<!-- <div class="card-header">
+  <div class="d-flex justify-content-center h-100">
+    <div class="card">
+      <!-- <div class="card-header">
 				<h3>Registro</h3>
 				
 			</div> -->
-			<!-- REGISTRO USUARIO -->
-			<div class="card-body " *ngIf="TipoRegistro === 1">
-				<form [formGroup]="usuariosForm" class="row" (ngSubmit)="registrarUsuario(usuariosForm.value)">
-					<!-- NOMBRE USUARIO -->
-					<div class="form-control-group col-6">
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-user"></i></span>
-							</div>
-							<input class="form-control" formControlName="usuario" type="text" placeholder="Nombre de usuario">
-						</div>
-						<div>
-							<mat-error *ngIf="usuariosForm.get('usuario').hasError('required') 
-												&& usuariosForm.get('usuario').dirty"
-							class="error">Este campo es requerido</mat-error>
-						</div>
-					</div>
-					<!-- CORREO -->
-					<div class="form-control-group col-6">
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-envelope"></i></span>
-							</div>
-							<input class="form-control" formControlName="correo" type="text" placeholder="Correo">
-						</div>
-						<div>
-							<div *ngIf="usuariosForm.get('correo').invalid && (usuariosForm.get('correo').dirty || usuariosForm.get('correo').touched)">
-								<mat-error *ngIf="usuariosForm.get('correo').hasError('required')
-								&& usuariosForm.get('correo').dirty"
-								class="error">Este campo es requerido</mat-error>
-								<mat-error *ngIf="!usuariosForm.get('correo').hasError('required')"
-								class="error">Este correo es invalido</mat-error>
-							</div>
-						</div>
-					</div>
-					<!-- NOMBRES -->
-					<div class="form-control-group col-6">
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-signature"></i></span>
-							</div>
-							<input class="form-control" formControlName="nombres" type="text" placeholder="Nombres">
-						</div>
-						<div>
-							<mat-error *ngIf="usuariosForm.get('nombres').hasError('required')
-							&& usuariosForm.get('nombres').dirty"
-							class="error">Este campo es requerido</mat-error>
-						</div>
-					</div>
-					<!-- APELLIDOS -->
-					<div class="form-control-group col-6">
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-signature"></i></span>
-							</div>
-							<input class="form-control" formControlName="apellidos" type="text" placeholder="Apellidos">
-						</div>
-						<div>
-							<mat-error *ngIf="usuariosForm.get('apellidos').hasError('required')
-							&& usuariosForm.get('apellidos').dirty"
-							class="error">Este campo es requerido</mat-error>
-						</div>
-					</div>
-					<!-- RUT -->
-					<div class="form-control-group col-6">
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-address-card"></i></span>
-							</div>
-							<input class="form-control" formControlName="rut" type="text" placeholder="Rut">
-						</div>
-						<div>
-							<mat-error *ngIf="usuariosForm.get('rut').hasError('required')
-							&& usuariosForm.get('rut').dirty"
-							class="error">Este campo es requerido</mat-error>
-						</div>
-					</div>
-					<!-- TELEFONO -->
-					<div class="form-control-group col-6">
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-phone"></i></span>
-							</div>
-							<input class="form-control" formControlName="telefono" type="number"  placeholder="Teléfono">
-						</div>
-						<div>
-							<mat-error *ngIf="usuariosForm.get('telefono').hasError('required')
-							&& usuariosForm.get('telefono').dirty"
-							class="error">Este campo es requerido</mat-error>
-						</div>
-					</div>
-					<!-- CLAVE -->
-					<div class="form-control-group col-6">
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-key"></i></span>
-							</div>
-							<input class="form-control" 
-							minlength="8" formControlName="clave" type="password" placeholder="Clave">
-						</div>
-						<div>
-							<mat-error *ngIf="usuariosForm.get('clave').hasError('required')
-							&& usuariosForm.get('clave').dirty"
-							class="error">Este campo es requerido</mat-error>
-							<mat-error *ngIf="usuariosForm.get('clave').hasError('minlength')
-							"
-							class="error">Logitud minima 8 caracteres</mat-error>
-						</div>
-					</div>
-					<!-- REPETIR CLAVE -->
-					<div class="form-control-group col-6">
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-key"></i></span>
-							</div>
-							<input class="form-control" formControlName="rclave" type="password" placeholder="Repita la clave">
-						</div>
-						<div>
-							<mat-error *ngIf="usuariosForm.get('rclave').hasError('required')
-							&& usuariosForm.get('rclave').dirty"
-							class="error">Este campo es requerido</mat-error>
-						</div>
-					</div>
-					<div class="text-center col-12 mt-2">
-						<mat-error *ngIf="usuarioClaveInvalida"
-								class="error ">Las claves no coiciden.</mat-error>
-					</div>
+      <!-- REGISTRO USUARIO -->
+      <div class="card-body" *ngIf="TipoRegistro === 1">
+        <form
+          [formGroup]="usuariosForm"
+          class="row"
+          (ngSubmit)="registrarUsuario(usuariosForm.value)"
+        >
+          <!-- NOMBRE USUARIO -->
+          <div class="form-control-group col-xl-6 col-md-6 col-sm-12">
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"
+                  ><i class="fas fa-user"></i
+                ></span>
+              </div>
+              <input
+                class="form-control"
+                formControlName="usuario"
+                type="text"
+                placeholder="Nombre de usuario"
+              />
+            </div>
+            <div>
+              <mat-error
+                *ngIf="
+                  usuariosForm.get('usuario').hasError('required') &&
+                  usuariosForm.get('usuario').dirty
+                "
+                class="error"
+                >Este campo es requerido</mat-error
+              >
+            </div>
+          </div>
+          <!-- CORREO -->
+          <div class="form-control-group col-xl-6 col-md-6 col-sm-12">
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"
+                  ><i class="fas fa-envelope"></i
+                ></span>
+              </div>
+              <input
+                class="form-control"
+                formControlName="correo"
+                type="text"
+                placeholder="Correo"
+              />
+            </div>
+            <div>
+              <div
+                *ngIf="
+                  usuariosForm.get('correo').invalid &&
+                  (usuariosForm.get('correo').dirty ||
+                    usuariosForm.get('correo').touched)
+                "
+              >
+                <mat-error
+                  *ngIf="
+                    usuariosForm.get('correo').hasError('required') &&
+                    usuariosForm.get('correo').dirty
+                  "
+                  class="error"
+                  >Este campo es requerido</mat-error
+                >
+                <mat-error
+                  *ngIf="!usuariosForm.get('correo').hasError('required')"
+                  class="error"
+                  >Este correo es invalido</mat-error
+                >
+              </div>
+            </div>
+          </div>
+          <!-- NOMBRES -->
+          <div class="form-control-group col-xl-6 col-md-6 col-sm-12">
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"
+                  ><i class="fas fa-signature"></i
+                ></span>
+              </div>
+              <input
+                class="form-control"
+                formControlName="nombres"
+                type="text"
+                placeholder="Nombres"
+              />
+            </div>
+            <div>
+              <mat-error
+                *ngIf="
+                  usuariosForm.get('nombres').hasError('required') &&
+                  usuariosForm.get('nombres').dirty
+                "
+                class="error"
+                >Este campo es requerido</mat-error
+              >
+            </div>
+          </div>
+          <!-- APELLIDOS -->
+          <div class="form-control-group col-xl-6 col-md-6 col-sm-12">
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"
+                  ><i class="fas fa-signature"></i
+                ></span>
+              </div>
+              <input
+                class="form-control"
+                formControlName="apellidos"
+                type="text"
+                placeholder="Apellidos"
+              />
+            </div>
+            <div>
+              <mat-error
+                *ngIf="
+                  usuariosForm.get('apellidos').hasError('required') &&
+                  usuariosForm.get('apellidos').dirty
+                "
+                class="error"
+                >Este campo es requerido</mat-error
+              >
+            </div>
+          </div>
+          <!-- RUT -->
+          <div class="form-control-group col-xl-6 col-md-6 col-sm-12">
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"
+                  ><i class="fas fa-address-card"></i
+                ></span>
+              </div>
+              <input
+                class="form-control"
+                formControlName="rut"
+                type="text"
+                placeholder="Rut"
+              />
+            </div>
+            <div>
+              <mat-error
+                *ngIf="
+                  usuariosForm.get('rut').hasError('required') &&
+                  usuariosForm.get('rut').dirty
+                "
+                class="error"
+                >Este campo es requerido</mat-error
+              >
+            </div>
+          </div>
+          <!-- TELEFONO -->
+          <div class="form-control-group col-xl-6 col-md-6 col-sm-12">
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"
+                  ><i class="fas fa-phone"></i
+                ></span>
+              </div>
+              <input
+                class="form-control"
+                formControlName="telefono"
+                type="number"
+                placeholder="Teléfono"
+              />
+            </div>
+            <div>
+              <mat-error
+                *ngIf="
+                  usuariosForm.get('telefono').hasError('required') &&
+                  usuariosForm.get('telefono').dirty
+                "
+                class="error"
+                >Este campo es requerido</mat-error
+              >
+            </div>
+          </div>
+          <!-- CLAVE -->
+          <div class="form-control-group col-xl-6 col-md-6 col-sm-12">
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+              </div>
+              <input
+                class="form-control"
+                minlength="8"
+                formControlName="clave"
+                type="password"
+                placeholder="Clave"
+              />
+            </div>
+            <div>
+              <mat-error
+                *ngIf="
+                  usuariosForm.get('clave').hasError('required') &&
+                  usuariosForm.get('clave').dirty
+                "
+                class="error"
+                >Este campo es requerido</mat-error
+              >
+              <mat-error
+                *ngIf="usuariosForm.get('clave').hasError('minlength')"
+                class="error"
+                >Logitud minima 8 caracteres</mat-error
+              >
+            </div>
+          </div>
+          <!-- REPETIR CLAVE -->
+          <div class="form-control-group col-xl-6 col-md-6 col-sm-12">
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+              </div>
+              <input
+                class="form-control"
+                formControlName="rclave"
+                type="password"
+                placeholder="Repita la clave"
+              />
+            </div>
+            <div>
+              <mat-error
+                *ngIf="
+                  usuariosForm.get('rclave').hasError('required') &&
+                  usuariosForm.get('rclave').dirty
+                "
+                class="error"
+                >Este campo es requerido</mat-error
+              >
+            </div>
+          </div>
+          <div class="text-center col-12 mt-2">
+            <mat-error *ngIf="usuarioClaveInvalida" class="error"
+              >Las claves no coiciden.</mat-error
+            >
+          </div>
+          <div class="col-12">
+            <mat-checkbox class="colorWhite"
+              >Términos y condiciones
+              <a
+                href="./assets/documents/terminos.docx"
+                download="TÉRMINOS Y CONDICIONES DE USO DEL SITIO DE TIENDA LIMÓN.docx"
+                >Descargar</a
+              ></mat-checkbox
+            >
+          </div>
 
-					<div class="form-group col-12 mt-4">
-						<input type="submit" value="Registrarse" class="btn float-right login_btn"
-						[disabled]="usuariosForm.status !== 'VALID'
-						&& submit === false">
-					</div>
-				</form>
-			</div>
-
-			<!-- FORMULARIO EMPRESA -->
-			<div class="card-body" *ngIf="TipoRegistro === 2">
-				<form [formGroup]="empresasForm" class="row" (ngSubmit)="registrarEmpresa(empresasForm.value)">
-					<!-- NOMBRE USUARIO -->
-					<div class="form-control-group col-6">
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-user"></i></span>
-							</div>
-							<input class="form-control" formControlName="usuario" type="text" placeholder="Nombre de usuario">
-						</div>
-						<div>
-							<mat-error *ngIf="empresasForm.get('usuario').hasError('required') 
-												&& empresasForm.get('usuario').dirty"
-							class="error">Este campo es requerido</mat-error>
-						</div>
-					</div>
-					<!-- CORREO -->
-					<div class="form-control-group col-6">
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-envelope"></i></span>
-							</div>
-							<input class="form-control" formControlName="correo" type="text" placeholder="Correo">
-						</div>
-						<div>
-							<div *ngIf="empresasForm.get('correo').invalid && (empresasForm.get('correo').dirty || empresasForm.get('correo').touched)">
-								<mat-error *ngIf="empresasForm.get('correo').hasError('required')
-								&& empresasForm.get('correo').dirty"
-								class="error">Este campo es requerido</mat-error>
-								<mat-error *ngIf="!empresasForm.get('correo').hasError('required')"
-								class="error">Este correo es invalido</mat-error>
-							</div>
-						</div>
-					</div>
-					<!-- RAZON SOCIAL -->
-					<div class="form-control-group col-6">
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-signature"></i></span>
-							</div>
-							<input class="form-control" formControlName="razon_social" type="text" placeholder="Razón Social">
-						</div>
-						<div>
-							<mat-error *ngIf="empresasForm.get('razon_social').hasError('required')
-							&& empresasForm.get('razon_social').dirty"
-							class="error">Este campo es requerido</mat-error>
-						</div>
-					</div>
-					<!-- NOMBRE FANTASIA -->
-					<div class="form-control-group col-6">
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-signature"></i></span>
-							</div>
-							<input class="form-control" formControlName="nombre_fantasia" type="text" 
-								placeholder="Nombre Fantasia">
-						</div>
-						<div>
-							<mat-error *ngIf="empresasForm.get('nombre_fantasia').hasError('required')
-							&& empresasForm.get('nombre_fantasia').dirty"
-							class="error">Este campo es requerido</mat-error>
-						</div>
-					</div>
-					<!-- RUT -->
-					<div class="form-control-group col-6">
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-address-card"></i></span>
-							</div>
-							<input class="form-control" formControlName="rut" type="text" placeholder="Rut">
-						</div>
-						<div>
-							<mat-error *ngIf="empresasForm.get('rut').hasError('required')
-							&& empresasForm.get('rut').dirty"
-							class="error">Este campo es requerido</mat-error>
-						</div>
-					</div>
-					<!-- TELEFONO -->
-					<div class="form-control-group col-6">
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-phone"></i></span>
-							</div>
-							<input class="form-control" formControlName="telefono" type="number" placeholder="Teléfono">
-						</div>
-						<div>
-							<mat-error *ngIf="empresasForm.get('telefono').hasError('required')
-							&& empresasForm.get('telefono').dirty"
-							class="error">Este campo es requerido</mat-error>
-						</div>
-					</div>
-					<!-- GIRO -->
-					<div class="form-control-group col-12">
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-address-book"></i></span>
-							</div>
-							<input class="form-control" formControlName="giro" type="text" placeholder="Giro">
-						</div>
-						<div>
-							<mat-error *ngIf="empresasForm.get('giro').hasError('required')
-							&& empresasForm.get('giro').dirty"
-							class="error">Este campo es requerido</mat-error>
-						</div>
-					</div>
-					<!-- CLAVE -->
-					<div class="form-control-group col-6">
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-key"></i></span>
-							</div>
-							<input class="form-control" 
-								minlength="8" formControlName="clave" type="password" placeholder="Clave">
-						</div>
-						<div>
-							<mat-error *ngIf="empresasForm.get('clave').hasError('required')
-							&& empresasForm.get('clave').dirty"
-							class="error">Este campo es requerido</mat-error>
-							<mat-error *ngIf="empresasForm.get('clave').hasError('minlength')
-							"
-							class="error">Logitud minima 8 caracteres</mat-error>
-						</div>
-					</div>
-					<!-- REPETIR CLAVE -->
-					<div class="form-control-group col-6">
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-key"></i></span>
-							</div>
-							<input class="form-control" formControlName="rclave" type="password" placeholder="Repita la clave">
-						</div>
-						<div>
-							<mat-error *ngIf="empresasForm.get('rclave').hasError('required')
-							&& empresasForm.get('rclave').dirty"
-							class="error">Este campo es requerido</mat-error>
-						</div>
-					</div>
-					
-					<div class="text-center col-12 mt-2">
-						<mat-error *ngIf="empresaClaveInvalida"
-							class="error">Las claves no coiciden.</mat-error>
-					</div>
-					
-					<div class="form-group col-12 mt-4">
-						<input type="submit" value="Registrarse" class="btn float-right login_btn" 
-							[disabled]="empresasForm.status !== 'VALID'
-							&& submit === false">
-					</div>
-				</form>
-			</div>
-			<div class="card-footer">
-				<div class="d-flex justify-content-center links">
-					¿Tienes cuenta?<a [routerLink]="['../login']" routerLinkActive="router-link-active" >Ingresa</a>
-				</div>
-			</div>
-		</div>
-	</div>
+          <div class="form-group col-12 mt-4">
+            <input
+              type="submit"
+              value="Registrarse"
+              class="btn float-right login_btn"
+              [disabled]="usuariosForm.status !== 'VALID' && submit === false"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+          ¿Tienes cuenta?<a
+            [routerLink]="['../login']"
+            routerLinkActive="router-link-active"
+            >Ingresa</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

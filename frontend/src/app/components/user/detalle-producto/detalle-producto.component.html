@@ -25,8 +25,8 @@
           <mat-form-field appearance="outline" style="width: 60%;">
               <mat-label>Sucursal Retiro</mat-label>
               <mat-select (selectionChange)="nuevasucursal()" formControlName="sucursal">
-                <mat-option *ngFor="let sucursal of sucursales" [value]="sucursal.id_sucursales">
-                  {{sucursal.nombre_sucursal}}
+                <mat-option *ngFor="let sucursal of sucursales" [value]="sucursal.id">
+                  {{sucursal.name}}
                 </mat-option>
               </mat-select>
           </mat-form-field>

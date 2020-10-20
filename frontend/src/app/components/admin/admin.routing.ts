@@ -5,11 +5,12 @@ import { CategoriasComponent } from './categorias/categorias.component'
 import { ProductosComponent } from './productos/productos.component'
 import { PerfilComponent } from './perfil/perfil.component'
 import { ServiciosComponent } from './servicios/servicios.component'
+import { SucursalesComponent } from './sucursales/sucursales.component'
 
 export const AdminRoutes: Routes = [
   {
     path: 'dashboard',
-    component: DashboardComponent,
+    component: UsuariosComponent,
   },
   {
     path: 'usuarios',
@@ -30,6 +31,10 @@ export const AdminRoutes: Routes = [
   {
     path:'servicios',
     component:ServiciosComponent
+  },
+  {
+    path:'sucursales',
+    component:SucursalesComponent
   },
   
 ];

@@ -11,10 +11,25 @@ module.exports = (sequelize, DataTypes) => {
       imagenes:{
         type:DataTypes.STRING,
       },
+      sku:{
+        type:DataTypes.STRING,
+      },
       precio:{
         type: DataTypes.INTEGER,
       },
       descripcion_producto:{
+        type: DataTypes.STRING,
+      },
+      length:{
+        type: DataTypes.STRING,
+      },
+      height:{
+        type: DataTypes.STRING,
+      },
+      width:{
+        type: DataTypes.STRING,
+      },
+      weight:{
         type: DataTypes.STRING,
       },
       estado:{

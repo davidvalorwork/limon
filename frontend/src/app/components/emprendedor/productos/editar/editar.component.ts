@@ -34,7 +34,12 @@ export class EditarProductoComponent implements OnInit{
         nombre_producto:[this.data.nombre_producto, Validators.required],
         descripcion_producto:[this.data.descripcion_producto, Validators.required],
         precio:[this.data.precio, Validators.required],
+        sku:[this.data.sku, Validators.required],
         borrado:[this.data.borrado],
+        length:[this.data.length, Validators.required],
+        height:[this.data.height, Validators.required],
+        width:[this.data.width, Validators.required],
+        weight:[this.data.weight, Validators.required],
         nombre_id:['id_productos'],
         categoriaIdCategorias:[this.data.categoriaIdCategorias, Validators.required], //localStorage.getItem("categoria")
         imagenes:[],

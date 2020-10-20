@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
     borrado:{
       type: DataTypes.INTEGER,
     },
+    id_sucursal:{
+      type: DataTypes.INTEGER
+    }
   },
     {
       freezeTableName: true
@@ -18,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   Stock.associate = (models) => {
       Stock.belongsTo(models.subproductos);
-      Stock.belongsTo(models.sucursales);
+      // Stock.belongsTo(models.sucursales);
   };
   return Stock;
 }

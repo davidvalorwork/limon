@@ -6,6 +6,7 @@ import {MatDialogRef} from '@angular/material/dialog'
 import {environment} from '../../../../../../../environments/environment'
 import {SucursalService} from '../../../../../../services/sucursal.service'
 import {StockService} from '../../../../../../services/stock.service'
+import { ShipitService } from '../../../../../../services/shipit.service'
 
 @Component({
   selector: 'app-crear-stock',
@@ -20,7 +21,7 @@ export class CrearStockComponent implements OnInit {
 
   form:FormGroup = this.fb.group({
     cantidad:['', Validators.required],
-    sucursaleIdSucursales:['', Validators.required],
+    id_sucursal:['', Validators.required],
     borrado:[0],
     subproductoIdSubproductos:[localStorage.getItem('subproducto')],
   })
@@ -32,14 +33,26 @@ export class CrearStockComponent implements OnInit {
     public dialogRef: MatDialogRef<CrearStockComponent>,
     private sucursalService: SucursalService,
     private stockService:StockService,
+    private shipitService:ShipitService,
     // private router:Router,
   ) { }
 
-  ngOnInit(): void {
+  getSucursalesShipit(){
+    this.shipitService.getSucursales().subscribe((res)=>{
+      console.log(res)
+      this.sucursales = res
+    })
+  }
+
+  getSucursalesBD(){
     this.sucursalService.get().subscribe((response:any)=>{
       console.log(response.payload)
       this.sucursales = response.payload
     })
+  }
+
+  ngOnInit(): void {
+    this.getSucursalesShipit()
   }
 
   crear(producto:any){

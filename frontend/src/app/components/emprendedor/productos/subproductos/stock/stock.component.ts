@@ -9,6 +9,7 @@ import {CrearStockComponent} from './crear-stock/crear-stock.component'
 import {DesicionComponent} from '../../../../utils/desicion/desicion.component';
 import {EditarStockComponent} from './editar-stock/editar-stock.component'
 import {SucursalService} from '../../../../../services/sucursal.service'
+import {ShipitService} from '../../../../../services/shipit.service'
 @Component({
   selector: 'app-stock',
   templateUrl: './stock.component.html',
@@ -28,6 +29,7 @@ export class StockComponent implements OnInit {
       private snackBar: SnackBar,
       private router:Router,  
       public dialog: MatDialog,
+      private shipitService:ShipitService,
       private sucursalService:SucursalService,  
   ){}
   buscar(event:any){
@@ -37,11 +39,14 @@ export class StockComponent implements OnInit {
       return productoS.indexOf(event.target.value)===-1?false:true;
     });
   }
-  ngOnInit(){
-    this.sucursalService.get().subscribe((response:any)=>{
-      this.sucursales = response.payload
+  getSucursalesShipit(){
+    this.shipitService.getSucursales().subscribe((res)=>{
+      this.sucursales = res
+      console.log(res)
+      this.getStock()
     })
-    this.loadingBar.start()
+  }
+  getStock(){
     this.stockService.getByCondition({
       condicion:{where:{subproductoIdSubproductos:localStorage.getItem("subproducto"),borrado:0}}
     }).subscribe((response)=>{
@@ -51,13 +56,23 @@ export class StockComponent implements OnInit {
       console.log(this.productos)
       for(let x in this.productos){
         for(let i in this.sucursales){
-          if(this.sucursales[i].id_sucursales === this.productos[x].sucursaleIdSucursales){
-            this.productos[x].sucursal = this.sucursales[i].nombre_sucursal
+          console.log(this.sucursales[i].id)
+          console.log(this.productos[x].id_sucursal)
+          if(this.sucursales[i].id === this.productos[x].id_sucursal){
+            this.productos[x].sucursal = this.sucursales[i].name
           }
         }
       }
     },
     err=>console.log(err));
+  }
+  ngOnInit(){
+    // this.sucursalService.get().subscribe((response:any)=>{
+    //   this.sucursales = response.payload
+    // })
+    this.loadingBar.start()
+    this.getSucursalesShipit()
+    
   };
   crear(){
     const dialogRef = this.dialog.open(CrearStockComponent, {

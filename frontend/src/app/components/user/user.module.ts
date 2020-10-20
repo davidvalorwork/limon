@@ -19,6 +19,8 @@ import { DetalleCategoriaComponent } from './detalle-categoria/detalle-categoria
 import { CarritoComponent } from './carrito/carrito.component';
 import { ArriendoComponent } from './arriendo/arriendo.component';
 import { DetalleServicioComponent } from './detalle-servicio/detalle-servicio.component';
+import { FacturaComponent } from './factura/factura.component';
+// import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
 
 // import { CategoriasPipe } from '../../pipe/categorias.pipe';
 
@@ -33,7 +35,7 @@ import { DetalleServicioComponent } from './detalle-servicio/detalle-servicio.co
     FlexLayoutModule,
     NgImageSliderModule,
     CdkTableModule,
-    
+    // MatGoogleMapsAutocompleteModule,
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   entryComponents: [],
@@ -47,6 +49,7 @@ import { DetalleServicioComponent } from './detalle-servicio/detalle-servicio.co
   DetalleCategoriaComponent,
   CarritoComponent,
   ArriendoComponent,
-  DetalleServicioComponent]
+  DetalleServicioComponent,
+  FacturaComponent]
 })
 export class UserComponentsModule {}

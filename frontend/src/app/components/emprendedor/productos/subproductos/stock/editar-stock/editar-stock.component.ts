@@ -6,6 +6,7 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
 import {environment} from '../../../../../../../environments/environment'
 import {SucursalService} from '../../../../../../services/sucursal.service'
 import {StockService} from '../../../../../../services/stock.service'
+import {ShipitService} from '../../../../../../services/shipit.service'
 @Component({
   selector: 'app-editar-stock',
   templateUrl: './editar-stock.component.html',
@@ -20,7 +21,7 @@ export class EditarStockComponent implements OnInit {
   form:FormGroup = this.fb.group({
     id_stock:[this.data.id_stock],
     cantidad:[this.data.cantidad, Validators.required],
-    sucursaleIdSucursales:[this.data.sucursaleIdSucursales, Validators.required],
+    id_sucursal:[this.data.id_sucursal, Validators.required],
     borrado:[0],
     subproductoIdSubproductos:[this.data.subproductoIdSubproductos],
   })
@@ -33,14 +34,23 @@ export class EditarStockComponent implements OnInit {
     private sucursalService: SucursalService,
     private stockService:StockService,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    private shipitService:ShipitService,
     // private router:Router,
   ) { }
 
-  ngOnInit(): void {
-    this.sucursalService.get().subscribe((response:any)=>{
-      console.log(response.payload)
-      this.sucursales = response.payload
+  getSucursalesShipit(){
+    this.shipitService.getSucursales().subscribe((res)=>{
+      console.log(res)
+      this.sucursales = res
     })
+  }
+
+  ngOnInit(): void {
+    // this.sucursalService.get().subscribe((response:any)=>{
+    //   console.log(response.payload)
+    //   this.sucursales = response.payload
+    // })
+    this.getSucursalesShipit()
   }
 
   crear(producto:any){

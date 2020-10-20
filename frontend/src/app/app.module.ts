@@ -17,7 +17,9 @@ import {UsuarioComponent} from './layout/usuario/usuario.component'
 import { from } from 'rxjs';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import {environment} from '../environments/environment'
-import { EmprendedorComponent} from './layout/emprendedor/emprendedor.component'
+import { EmprendedorComponent} from './layout/emprendedor/emprendedor.component';
+// import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
+// import { AgmCoreModule } from '@agm/core'
 const config: SocketIoConfig = { url: `${environment.URL_SOCKET}`, options: {} };
 @NgModule({
   declarations: [
@@ -40,6 +42,12 @@ const config: SocketIoConfig = { url: `${environment.URL_SOCKET}`, options: {} }
     FormsModule,
     LoadingBarModule,
     MaterialModule,
+    // MatGoogleMapsAutocompleteModule,
+    // AgmCoreModule.forRoot({
+    //   // apiKey: 'AIzaSyArEm9m-jUsZJTSVtpPgvgExjo4LMC4Z1E',
+    //   apiKey: 'AIzaSyBS6_4xgnglXNo-pxeAJfmgOoGl3ZgdqGo&v=3',
+    //   libraries: ['places']
+    // }),
   ],
   providers: [],
   bootstrap: [AppComponent]

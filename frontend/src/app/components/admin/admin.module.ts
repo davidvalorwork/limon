@@ -23,7 +23,10 @@ import { VerPostulacionComponent } from './usuarios/ver-postulacion/ver-postulac
 import { DescriptionComponent } from './usuarios/ver-postulacion/description/description.component';
 import { VerProductosComponent } from './usuarios/ver-postulacion/ver-productos/ver-productos.component';
 import { ServiciosComponent } from './servicios/servicios.component'
-import {VerServiciosComponent} from './servicios/ver/ver.component'
+import {VerServiciosComponent} from './servicios/ver/ver.component';
+import { SucursalesComponent } from './sucursales/sucursales.component'
+import {CrearSucursalComponent} from './sucursales/crear/crear.component'
+import {EditarSucursalComponent} from './sucursales/editar/editar.component'
 
 @NgModule({
   imports: [
@@ -41,6 +44,8 @@ import {VerServiciosComponent} from './servicios/ver/ver.component'
   declarations: [
     DashboardComponent,
     EditarComponent,
+    EditarSucursalComponent,
+    CrearSucursalComponent,
     CrearProductoComponent,
     UsuariosComponent,
     EditarProductoComponent,
@@ -54,7 +59,8 @@ import {VerServiciosComponent} from './servicios/ver/ver.component'
     VerPostulacionComponent,
     DescriptionComponent,
     VerProductosComponent,
-    ServiciosComponent
+    ServiciosComponent,
+    SucursalesComponent
   ]
 })
 export class AdminComponentsModule {}

@@ -8,6 +8,9 @@ module.exports = (sequelize, DataTypes) => {
     nombre_sucursal:{
       type: DataTypes.STRING,
     },
+    direccion:{
+      type: DataTypes.STRING,
+    },
     borrado:{
       type: DataTypes.INTEGER,
     },

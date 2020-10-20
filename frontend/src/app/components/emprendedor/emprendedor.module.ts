@@ -25,6 +25,8 @@ import { EditarSubproductoComponent } from './productos/subproductos/editar-subp
 import { StockComponent } from './productos/subproductos/stock/stock.component';
 import { CrearStockComponent } from './productos/subproductos/stock/crear-stock/crear-stock.component';
 import { EditarStockComponent } from './productos/subproductos/stock/editar-stock/editar-stock.component';
+import { EditarServicioComponent } from './servicios/editar/editar.component';
+import { EliminarServicioComponent } from './servicios/eliminar/eliminar.component';
 
 @NgModule({
   imports: [
@@ -69,6 +71,10 @@ import { EditarStockComponent } from './productos/subproductos/stock/editar-stoc
     
   CrearStockComponent,
     
-  EditarStockComponent]
+  EditarStockComponent,
+    
+  EditarServicioComponent,
+    
+  EliminarServicioComponent]
 })
 export class EmprendedorComponentsModule {}

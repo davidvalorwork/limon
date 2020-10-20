@@ -1,6 +1,6 @@
 <div  class="ml-5 mr-5">
 <div class="text-center mt-3 ">
-    <h3>MIS PEDIDOS</h3>
+    <h3>CARRITO DE COMPRAS</h3>
   </div>
   <hr>
   <mat-card class="example-card mt-4 mr-3 ml-3 mb-5" >
@@ -53,14 +53,16 @@
               <ng-container matColumnDef="options">
                   <th mat-header-cell *matHeaderCellDef>  </th>
                   <td mat-cell *matCellDef="let element">
-                      <a mat-raised-button color="secondary"
+
+                      <!-- <a mat-raised-button color="secondary"
                       (click)="pagar(element)" *ngIf="(element.estatus_pago === 'Borrador'
                       && element.stock === undefined) || 
                       (element.estatus_pago === 'Pendiente Por Pagar'
                       && element.stock === undefined)"
                       style="background-color: green; color: white;"
                       ><mat-icon>credit_card</mat-icon> PAGAR</a>
-                      <a mat-raised-button color="secondary" *ngIf="element.stock === false && element.estatus_pago !== 'Pagado'">Agotado</a>
+                      <a mat-raised-button color="secondary" *ngIf="element.stock === false && element.estatus_pago !== 'Pagado'">Agotado</a> -->
+
                       <a mat-raised-button color="danger" *ngIf="element.estatus_pago === 'Borrador'"
                       (click)="eliminar(element.id_pagos)"
                       style="background-color: red; color: white;"
@@ -71,8 +73,10 @@
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
-            <mat-paginator [pageSizeOptions]="[5, 10, 15]" [pageSize]="5"></mat-paginator>
-            
       </mat-card-content>
+      <div><p>TOTAL: <b>{{monto_total}}</b></p></div>
+      <button mat-raised-button color="primary" (click)="carritoEditar()">Actualizar</button>
+      <button mat-raised-button style="background-color: green; color: white;"><mat-icon>credit_card</mat-icon> Pagar</button>
+      <button mat-raised-button>Seguir comprando</button>
     </mat-card>
   </div>

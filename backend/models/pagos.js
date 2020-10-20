@@ -5,12 +5,6 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true
       },
-      monto:{
-        type: DataTypes.INTEGER,
-      },
-      cantidad:{
-        type: DataTypes.INTEGER,
-      },
       flow_order:{
         type: DataTypes.STRING,
       },
@@ -29,9 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     );
     Pagos.associate = (models) => {
-        Pagos.belongsTo(models.stock);
-        Pagos.belongsTo(models.servicios);
-        Pagos.belongsTo(models.usuarios);
+        Pagos.belongsTo(models.carrito);
     };
     return Pagos;
   }

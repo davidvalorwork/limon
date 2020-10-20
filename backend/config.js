@@ -1,5 +1,5 @@
 module.exports = {
-  URL_FRONT: 'http://localhost:4200',
+  URL_FRONT: 'https://espaciolimon',
   correo:'tiendalimoncl0@gmail.com',
-  contra:'tiendalimoncl012345'
+  contra:'tiendalimoncl012345678'
 }

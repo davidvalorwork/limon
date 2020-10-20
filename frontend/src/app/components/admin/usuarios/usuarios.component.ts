@@ -73,7 +73,7 @@ export class UsuariosComponent implements OnInit {
 
     ver(element:any){
         const dialogRef = this.dialog.open(VerPostulacionComponent, {
-            width:'50%',
+            width:'100%',
             data:element
         });
         dialogRef.afterClosed().subscribe(result=>{

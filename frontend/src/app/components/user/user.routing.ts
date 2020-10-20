@@ -10,6 +10,7 @@ import { ArriendoComponent } from './arriendo/arriendo.component';
 import { DetalleCategoriaComponent } from './detalle-categoria/detalle-categoria.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { DetalleServicioComponent } from './detalle-servicio/detalle-servicio.component';
+import { FacturaComponent } from './factura/factura.component';
 
 export const UserRoutes: Routes = [
   {
@@ -51,6 +52,10 @@ export const UserRoutes: Routes = [
   },
   {
     path:'carrito',
+    component:FacturaComponent
+  },
+  {
+    path:'factura',
     component:CarritoComponent
   },
 ];

@@ -1,0 +1,28 @@
+.quitaBorde{
+  border: 0px solid rgba(0,0,0,.125); background-color: transparent;
+}
+
+@media handheld, only screen and (max-width: 1260px) {
+  .reduceMargin{
+    margin-top: none !important;
+  }
+  .pequenoPading{
+    padding-left: none !important;
+  }
+  .pequenoPadingMenos{
+    padding-left: none !important;
+  }
+}
+
+
+@media only screen and (min-width: 1270px) {
+  .reduceMargin{
+    margin-top: -120px;
+  }
+  .pequenoPading{
+    padding-left: 69px;
+  }
+  .pequenoPadingMenos{
+    padding-left: 39px;
+  }
+}

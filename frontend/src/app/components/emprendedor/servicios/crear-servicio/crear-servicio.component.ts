@@ -27,6 +27,7 @@ export class CrearServicioComponent implements OnInit {
     nombre_servicio:['', Validators.required],
     imagenes:[],
     precio:['', Validators.required],
+    sku:['', Validators.required],
     descripcion_servicio:['', Validators.required],
     direccion:['',Validators.required],
     estado:['En Revisión'],

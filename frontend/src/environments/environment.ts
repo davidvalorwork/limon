@@ -4,12 +4,22 @@
 
 export const environment = {
   production: false,
-  // URL_API:"http://localhost:3030",
-  // URL_SOCKET:"http://localhost:5000",
-  // URL_FRONT: "http://localhost:4200",
-  URL_API:"http://18.218.87.159:3030",
-  URL_SOCKET:"http://18.218.87.159:5000",
-  URL_FRONT: "http://18.218.87.159/limon",
+  // URL_API: 'http://localhost:3000',
+  // URL_SOCKET: 'http://localhost:3100',
+  // URL_FRONT: 'http://localhost:4200',
+
+  // DESARROLLO
+  // URL_API:"http://18.218.87.159:3008",
+  // URL_SOCKET:"http://18.218.87.159:3009",
+  // URL_FRONT: "http://18.218.87.159/limon",
+
+  // PRODUCCION
+  // URL_API:"http://3.128.159.107:3000",
+  // URL_SOCKET:"http://3.128.159.107:3100",
+  // URL_FRONT: "http://3.128.159.107",
+  URL_API:"https://espaciolimon.cl:3000",
+  URL_SOCKET:"https://espaciolimon.cl:3100",
+  URL_FRONT: "https://espaciolimon.cl",
 };
 
 /*

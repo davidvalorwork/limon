@@ -10,7 +10,7 @@ import {CategoriaService} from '../../../services/categorias.service'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {CrearServicioComponent} from './crear-servicio/crear-servicio.component'
 import {DesicionComponent} from '../../utils/desicion/desicion.component';
-// import {EditarProductoComponent} from './editar/editar.component'
+import {EditarServicioComponent} from './editar/editar.component'
 // import { VerComponent } from './ver/ver.component'
 @Component({
   selector: 'app-servicios',
@@ -23,7 +23,7 @@ export class ServiciosComponent implements OnInit {
   // @ViewChild(MatPaginator) paginator: MatPaginator;
   // @ViewChild(MatSort) sort: MatSort;
   dataSource:any;
-  displayedColumns: string[] = ['nombre_producto','descripcion_producto','precio', 'direccion' ,'categoria','estado','options'];
+  displayedColumns: string[] = ['nombre_producto','descripcion_producto','precio', 'direccion' ,'categoria','options'];
   servicios:any;
   constructor(
       private serviciosService:serviciosService,
@@ -32,7 +32,11 @@ export class ServiciosComponent implements OnInit {
       private snackBar: SnackBar,
       private router:Router,  
       public dialog: MatDialog  
-  ){}
+  ){
+    this.categoriaService.getCategorias().subscribe((response:any)=>{
+      this.categorias = response.payload
+    })
+  }
   buscar(event:any){
       const servicios = this.servicios;
       this.dataSource = servicios.filter((producto:any)=>{
@@ -47,6 +51,13 @@ export class ServiciosComponent implements OnInit {
     }).subscribe((response)=>{
         this.loadingBar.complete();
         this.servicios = response.payload;
+        for(let x in this.servicios){
+          for(let i in this.categorias){
+            if(this.categorias[i].id_categorias === this.servicios[x].categoriaIdCategorias){
+              this.servicios[x].categoria = this.categorias[i].nombre_categoria
+            }
+          }
+        }
         this.dataSource = this.servicios
         console.log(this.servicios)
     },
@@ -62,13 +73,13 @@ export class ServiciosComponent implements OnInit {
     });
   }
   editar(element:any){
-    // const dialogRef = this.dialog.open(EditarProductoComponent,{
-    //   width:'80%',
-    //   data:element
-    // })
-    // dialogRef.afterClosed().subscribe(result=>{
-    //   this.ngOnInit();
-    // })
+    const dialogRef = this.dialog.open(EditarServicioComponent,{
+      width:'80%',
+      data:element
+    })
+    dialogRef.afterClosed().subscribe(result=>{
+      this.ngOnInit();
+    })
   }
   ver(element:any){
     // const dialogRef = this.dialog.open(VerComponent,{

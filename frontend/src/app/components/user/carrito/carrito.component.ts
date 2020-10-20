@@ -23,11 +23,12 @@ import {serviciosService} from '../../../services/servicios.service'
   styleUrls: ['./carrito.component.css']
 })
 export class CarritoComponent implements OnInit {
-    @ViewChild(MatPaginator) paginator: MatPaginator;
     // @ViewChild(MatSort) sort: MatSort;
     dataSource:MatTableDataSource<[]>;
     displayedColumns: string[] = ['producto','subproducto','sucursal','monto', 'estado','options'];
     pedidos:any;
+    editar:boolean=false;
+    monto_total:number;
     constructor(
         private categoriaService:CategoriaService,
         private loadingBar: LoadingBarService,
@@ -53,12 +54,11 @@ export class CarritoComponent implements OnInit {
     }
     ngOnInit(){
         this.loadingBar.start()
-            this.pagoService.getByCondition({condicion:{where:{usuarioIdUsuarios:localStorage.getItem("id_usuarios"),borrado:0}}}).subscribe((response)=>{
+            this.pagoService.getByCondition({condicion:{where:{usuarioIdUsuarios:localStorage.getItem("id_usuarios"),borrado:0, estatus_pago:"Borrador"}}}).subscribe((response)=>{
                 this.loadingBar.complete();
                 // this.setDataSource()
                 this.pedidos = response.payload;
                 this.setDataSource()
-
                 for(let i in this.pedidos){
                     if(this.pedidos[i].servicioIdServicios){
                         console.log("SERVICIO")
@@ -114,8 +114,12 @@ export class CarritoComponent implements OnInit {
         
     }
     setDataSource(){
+        this.monto_total = 0 
         this.dataSource = new MatTableDataSource<[]>(this.pedidos);
-        this.dataSource.paginator = this.paginator;
+        this.pedidos.map((pedido)=>{
+            this.monto_total = this.monto_total + parseInt(pedido.monto)
+        })
+        // this.dataSource.paginator = this.paginator;
     }
     eliminar(id:string){
         const dialogRef = this.dialog.open(DesicionComponent, {
@@ -152,5 +156,9 @@ export class CarritoComponent implements OnInit {
         },err=>{
             this.snackBar.err("Error al contactar con flow","x")
         })
+    }
+
+    carritoEditar(){
+        this.editar = true
     }
 }

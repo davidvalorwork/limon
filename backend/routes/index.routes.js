@@ -10,6 +10,7 @@ const subproductos= require('./subproductos.routes')
 const sucursales= require('./sucursales.routes')
 const stock = require('./stock.routes')
 const contacto = require('./contacto.routes')
+const carrito = require('./carritos.routes')
 
 module.exports = (app,db,protegerRutas,multer) => {
     auth(app,db)
@@ -24,4 +25,5 @@ module.exports = (app,db,protegerRutas,multer) => {
     sucursales(app,db)
     stock(app,db)
     contacto(app,db)
+    carrito(app,db)
 }
